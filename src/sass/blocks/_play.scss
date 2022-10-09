@@ -1,0 +1,38 @@
+.play {
+    display: grid;
+    grid-template-columns: repeat(5, 150px);
+    gap: 20px;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    &__card {
+        width: 150px;
+        height: 100px;
+        border-radius: 7px;
+        cursor: pointer;
+        background: url('../img/card_word.jpg');
+        &__redW {
+            background: url('../img/redW.jpg');
+        }
+        &__redM {
+            background: url('../img/redM.jpg');
+        }
+        &__blueW {
+            background: url('../img/blueW.jpg');
+        }
+        &__blueM {
+            background: url('../img/blueM.jpg');
+        }
+        &__black {
+            background: url('../img/black.jpg');
+        }
+        &__neutralW {
+            background: url('../img/neutralW.jpg');
+        }
+        &__neutralM {
+            background: url('../img/neutralM.jpg');
+        }
+    }
+    
+}
