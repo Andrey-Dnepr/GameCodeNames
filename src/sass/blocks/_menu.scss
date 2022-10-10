@@ -1,10 +1,173 @@
 .menu {
     display: block;
-    width: 500px;
-    background-color: #fff;
+    padding-top: 30px;
+    width: 830px;
+    height: 580px;
+    border-radius: 12px;
+    background-color: rgba($color: #b7e7f1, $alpha: 0.5);
     position: absolute;
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
-    
+    img {
+        height: 100%;
+        border-radius: 7px;
+    }
+    &__title {
+        text-align: center;
+        font-size: 40px;
+        img {
+            width: 50%;
+        }
+    }
+    &__team__wrap {
+        margin-top: 30px;
+        display: grid;
+        grid-template-columns: repeat(2, auto);
+        gap: 50px;
+        justify-content: center;
+    }
+    &__team__item {
+        display: grid;
+        grid-template-columns: repeat(3, 75px);
+        grid-template-rows: repeat(4, 50px);
+        gap: 20px;
+        align-items: center;
+        border: solid;
+        border-width: 2px 4px;
+        border-radius: 40px;
+        padding: 20px;
+        border-color: antiquewhite;
+    }
+    .btn__choiсe_blue {
+        width: 80px;
+        height: 30px;
+        background-color: antiquewhite;
+        border-radius: 5px;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: #000000;
+        transition: 0.5s all;
+        &:hover {
+            border-radius: 15px;
+        }
+        &_active {
+            background-color: rgb(81, 167, 242);
+            color: #ffffff;
+            &:hover {
+                border-radius: 5px;
+            }
+        }    
+    }
+    .btn__choiсe_red {
+        width: 80px;
+        height: 30px;
+        background-color: antiquewhite;
+        border-radius: 5px;
+        border: none;
+        font-size: 14px;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: #000000;
+        transition: 0.5s all;
+        &:hover {
+            border-radius: 15px;
+        }
+        &_active {
+            background-color: rgb(232, 54, 14);
+            color: #ffffff;
+            &:hover {
+                border-radius: 5px;
+            }
+        }    
+    }
+    &__play {
+        display: block;
+        margin: 0 auto;
+        margin-top: 30px;
+        width: 100px;
+        height: 30px;
+        background-color: rgb(35, 228, 73);
+        border-radius: 5px;
+        border: none;
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: #ffffff;
+        transition: 0.5s all;
+        &:hover {
+            border-radius: 15px;
+            text-shadow: 1px 1px 1px rgb(5, 5, 5);
+        }
+    }
+    &__team__item__title {
+        grid-column: 1 / 4;
+        grid-row: 1;
+        text-align: center;
+        font-size: 20px;
+        color: antiquewhite;
+        border-radius: 10px;
+        background-color:rgb(81, 167, 242);
+        &_red {
+            background-color: rgb(232, 54, 14);
+        }
+    }
+    .blue1 {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .blue2 {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    .blue3 {
+        grid-column: 1;
+        grid-row: 3;
+    }
+    .blue4 {
+        grid-column: 2;
+        grid-row: 3;
+    }
+    .blue5 {
+        grid-column: 1;
+        grid-row: 4;
+    }
+    .blue6 {
+        grid-column: 2;
+        grid-row: 4;
+    }
+    .blue7 {
+        grid-column: 3;
+        grid-row: 4;
+    }
+    .red1 {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    .red2 {
+        grid-column: 3;
+        grid-row: 2;
+    }
+    .red3 {
+        grid-column: 2;
+        grid-row: 3;
+    }
+    .red4 {
+        grid-column: 3;
+        grid-row: 3;
+    }
+    .red5 {
+        grid-column: 1;
+        grid-row: 4;
+    }
+    .red6 {
+        grid-column: 2;
+        grid-row: 4;
+    }
+    .red7 {
+        grid-column: 3;
+        grid-row: 4;
+    }
 }

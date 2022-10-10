@@ -1,0 +1,27 @@
+.end {
+    width: 830px;
+    height: 580px;
+    position: absolute;
+    border-radius: 7px;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    background-color: rgba($color: #bbeafa, $alpha: 0.8);
+    &__win {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 30px;
+    }
+    &__loss {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 30px;
+    }
+    &__restart {
+        display: block;
+        margin: 0 auto;
+        margin-top: 30px;
+        width: 150px;
+        height: 30px;
+    }
+}
