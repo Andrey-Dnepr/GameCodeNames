@@ -1,0 +1,21 @@
+.captains {
+    display: block;
+    padding-top: 30px;
+    width: 830px;
+    height: 580px;
+    border-radius: 12px;
+    background-color: rgba($color: #b7e7f1, $alpha: 0.5);
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    .btn2 {
+        width: 200px;
+        height: 40px;
+    }
+    &__descr {
+        text-align: center;
+        margin-top: 100px;
+
+    }
+}

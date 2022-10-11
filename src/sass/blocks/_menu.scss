@@ -49,9 +49,14 @@
         font-weight: 500;
         text-transform: uppercase;
         color: #000000;
+        box-shadow: 2px 2px 3px gray;
         transition: 0.5s all;
         &:hover {
             border-radius: 15px;
+            // scale: 1.1;
+        }
+        &:focus {
+            outline: none;
         }
         &_active {
             background-color: rgb(81, 167, 242);
@@ -71,9 +76,13 @@
         font-weight: 500;
         text-transform: uppercase;
         color: #000000;
+        box-shadow: 2px 2px 3px gray;
         transition: 0.5s all;
         &:hover {
             border-radius: 15px;
+        }
+        &:focus {
+            outline: none;
         }
         &_active {
             background-color: rgb(232, 54, 14);
@@ -96,6 +105,7 @@
         font-weight: 500;
         text-transform: uppercase;
         color: #ffffff;
+        box-shadow: 2px 2px 3px gray;
         transition: 0.5s all;
         &:hover {
             border-radius: 15px;

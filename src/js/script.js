@@ -1,23 +1,81 @@
 window.addEventListener('DOMContentLoaded', () => {
     const menuSection = document.querySelectorAll('.menu'),
           playSection = document.querySelectorAll('.play'),
+          capitansSection = document.querySelectorAll('.captains'),
+          mapSection = document.querySelectorAll('.map'),
           wordSection = document.querySelectorAll('.word'),
           wordOne = document.querySelectorAll('.word_one'),
           wordTwo = document.querySelectorAll('.word_two'),
           wordWrap = document.querySelectorAll('.word_wrap'),
-          playBtn = document.querySelector('.menu__play'),
+          menuTeam = document.querySelector('.menu__team__wrap'),
+          blueBtn = document.querySelectorAll('.btn__choiсe_blue'),
+          redBtn = document.querySelectorAll('.btn__choiсe_red'),
+          playBtn = document.querySelector('.btn1'),
+          startBtn = document.querySelector('.btn2'),
+          okBtn = document.querySelector('.btn3'),
           restartBtn = document.querySelector('.end__restart'),
           end = document.querySelectorAll('.end'),
           words = "Сахара, свинья, ракета, долина, заяц, день, зад, пустыня, рюмка, роман, зебра, духи, серебро, Солнце, снег, дверь, жар-птица, пробка, спутник, рулетка, рука, железо, поклонник, Золушка, порт, сила, скрипка, кабачок, повар, почта, гриф, строчка, город, дробь, игра, камера, губа, почки, сало, гусеница, репка, сельдь, танец, тень, глаз, залив, золото, провал, инопланетянин, картина, пластик, сюжет, трава, снеговик, двигатель, таз, диск, пивная, страус, свеча, звук, помпа, свадьба, персонал, выстрел, Гримм, пистолет, Пушкин, разряд, квадрат, тюлень, деревня, пират, звезда, парус, плитка, Кавказ, Сочи, Франция, сон, клетка, хлеб, кирпич, заряд, театр, утка, Сатурн, революция, кнопка, дельфин, север, качели, Волга, восток, подлодка, дом, ворота, Холмс, поездка, пуля, пальма, винтовка, фильм, тьма, солдат, гора, гараж, кисть, карта, зима, завод, кольцо, пианино, Нью-Йорк, ручка, верблюд, рот, пол, небоскрёб, орёл, голова, цена, точка, Европа, среда, канал, сеть, камень, слово, тигр, шах, дача, шоколад, панда, опера, проба, мышь, Египет, чай, гостиница, посол, футбол, Русь, корень, победа, воздух, рубль, вакуум, телескоп, электричество, история, забор, Сибирь, зуб, кран, патрон, клуб, цветок, коса, грудь, часы, кровь, славяне, гитара, дракон, самолёт, перо, Прибалтика, река, сейф, Москва, зубр, стул, замок, свет, корабль, такт, пост, динозавр, яд, прокат, мир, группа, пятачок, медведь, Бразилия, Змей Горыныч, боб, круг, звонок, дворник, песок, картофель, актёр, труба, хоккей, автомобиль, бычок, собака, морда, норка, Белоруссия, космонавт, масштаб, Америка, былина, колесо, сыщик, иностранец, пицца, лира, хлопок, лес, сосиска, вал, стена, пиво, лошадь, полоса, мост, ветеринар, Африка, кухня, молоко, шашка, такса, хвост, бассейн, яблоко, лама, книга, малина, граница, кобра, письмо, выставка, вертолёт, парк, поезд, лыжи, казино, пляж, мяч, Украина, Китай, банан, куб, фокус, кенгуру, Азия, база, пилот, экран, телега, виски, бор, гольф, крем, капот, небо, лапа, луч, кетчуп, мамонт, царевна, каток, Урал, волна, нога, мина, торт, Германия, выдержка, тур, шпроты, кросс, батарея, школа, веер, Арктика, печать, ворона, палец, финка, концерт, облако, кит, мат, Лондон, лимон, акция, крикет, Пекин, блок, отпуск, шайба, берег, крокодил, парашют, мустанг, центр, алмаз, халва, мёд, юг, металл, ключ, кофе, цыплёнок, водка, огонь, хлыст, липа, царь, богатырь, Вагнер, королева, лист, корона, аквалангист, код, Англия, Чехия, коньяк, модель, бейсбол, ветер, крыло, брак, мороженое, нож, масло, автобус, язык, лёд, варенье, бюст, море, янтарь, Швейк, кот, наряд, лук, Австралия, Мосфильм, бутылка, Юпитер, Баба-Яга, штат, баран, молния, ладья, лаборатория, магазин, крепость, любовь, крыша, бокс, аист, крона, банк, миллионер, багет, марка, Левша, Луна, матрёшка, биатлон, башня, Аладдин, апельсин, лимузин, лодка";
+
+    let teamBlue = [],
+        teamRed = [],
+        blueChoice = 'men',
+        redChoice = 'women',
+        neutralCards = ['play__card__neutralW', 'play__card__neutralM'];
 
     function switchDisplay(i) {
         i.classList.toggle('hide_display');
     }
 
-    restartBtn.addEventListener('click', () => {location.reload()});
+    //Выбираем команды
+    menuTeam.addEventListener('click', (event) => {
+        if (event.target.classList.contains('btn__choiсe_blue') && !event.target.classList.contains('btn__choiсe_blue_active')) {
+            blueBtn.forEach((item) => {
+                item.classList.remove('btn__choiсe_blue_active');
+            });
+            event.target.classList.add('btn__choiсe_blue_active');
+            blueChoice = `${event.target.dataset.team}`;
+        }
+        if (event.target.classList.contains('btn__choiсe_red') && !event.target.classList.contains('btn__choiсe_red_active')) {
+            redBtn.forEach((item) => {
+                item.classList.remove('btn__choiсe_red_active');
+            });
+            event.target.classList.add('btn__choiсe_red_active');
+            redChoice = `${event.target.dataset.team}`;
+        }
+    });
+    //Окно предупреждение
+    playBtn.addEventListener('click', () => {
+        switchDisplay(menuSection[0]);
+        switchDisplay(capitansSection[0]);
+    });
+    //Окно с карточкой для капитанов
+    startBtn.addEventListener('click', () => {
+        switchDisplay(capitansSection[0]);
+        switchDisplay(mapSection[0]);
+        
+    });
 
     //Запуск игры
-    playBtn.addEventListener('click', () => {
+    okBtn.addEventListener('click', () => {
+        //Блок устаноки рубашек карточек в зависимости от типов команд
+        switch (blueChoice) {
+            case 'men': teamBlue[0] = 'play__card__blueM'; break;
+            case 'women': teamBlue[0] = 'play__card__blueW'; break;
+            case 'both': 
+                teamBlue[0] = 'play__card__blueM'; 
+                teamBlue[1] = 'play__card__blueW'; 
+                break;
+        }
+        switch (redChoice) {
+            case 'men': teamRed[0] = 'play__card__redM'; break;
+            case 'women': teamRed[0] = 'play__card__redW'; break;
+            case 'both': 
+                teamRed[0] = 'play__card__redM'; 
+                teamRed[1] = 'play__card__redW'; 
+                break;
+        }
+        
         let arrWords = words.toUpperCase().split(', '), 
             setWords = [],
             setCards = ['red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
@@ -27,8 +85,9 @@ window.addEventListener('DOMContentLoaded', () => {
             redCount = 0,
             blueCount = 0;
 
-        switchDisplay(menuSection[0]);
+        switchDisplay(mapSection[0]);
         switchDisplay(playSection[0]);
+
         //Блок генерации типов карточек и присваивание их к словам
         let randomNum = Math.floor(Math.random() * 2);
         if (randomNum == 0) {
@@ -54,6 +113,7 @@ window.addEventListener('DOMContentLoaded', () => {
             setWords[i] = arrWords[someIndex];
             arrWords.splice(someIndex, 1);
         }
+        //Размещаем слова на карточках
         wordOne.forEach((item, i) => {
             item.innerHTML = `${setWords[i]}`;
             if (setWords[i].length > 10) {
@@ -66,25 +126,34 @@ window.addEventListener('DOMContentLoaded', () => {
                 item.classList.add('word_two_s');
             }
         });
+        //
+
         switchDisplay(wordSection[0]);
+
         wordSection[0].addEventListener('click', (event) => {
             if (event.target.classList.contains('word_wrap')) {
                 switch (event.target.dataset.typeOfCard) {
-                    case 'red': 
-                        event.target.classList.add('play__card__redW'); 
+                    case 'red':
+                        if (teamRed.length == 1) {
+                            event.target.classList.add(`${teamRed[0]}`);
+                        } else {
+                            randomNum = Math.floor(Math.random() * 2);
+                            event.target.classList.add(`${teamRed[randomNum]}`);
+                        }
                         redCount--;
                         break;
                     case 'blue': 
-                        event.target.classList.add('play__card__blueM'); 
+                        if (teamBlue.length == 1) {
+                            event.target.classList.add(`${teamBlue[0]}`);
+                        } else {
+                            randomNum = Math.floor(Math.random() * 2);
+                            event.target.classList.add(`${teamBlue[randomNum]}`);
+                        }
                         blueCount--;
                         break;
                     case 'neutral': 
-                        let rdmCard = Math.floor(Math.random() * 2);
-                        if (rdmCard == 0) {
-                            event.target.classList.add('play__card__neutralW');     
-                        } else {
-                            event.target.classList.add('play__card__neutralM'); 
-                        }
+                        randomNum = Math.floor(Math.random() * 2);
+                        event.target.classList.add(`${neutralCards[randomNum]}`);
                         break;
                     case 'black': event.target.classList.add('play__card__black'); break;
                 }
@@ -96,11 +165,10 @@ window.addEventListener('DOMContentLoaded', () => {
                     switchDisplay(end[0]);
                     switchDisplay(end[0].children[1]);
                 }
-            }
-            
+            } 
         });
-
     });
 
+    restartBtn.addEventListener('click', () => {location.reload()});
 
 });
