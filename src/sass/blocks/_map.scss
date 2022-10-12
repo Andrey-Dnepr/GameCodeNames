@@ -9,4 +9,42 @@
     top: 50vh;
     left: 50vw;
     transform: translate(-50%, -50%);
+    &__descr {
+        text-align: center;
+        font-size: 30px;
+    }
+    &__card {
+        text-align: center;
+        padding-top: 16px;
+        font-size: 12px;
+        border-radius: 12px;
+        box-shadow: 2px 2px 3px gray;
+        &_s {
+            font-size: 9px;
+            padding-top: 19px;
+        }
+        &_b {
+            color: antiquewhite;
+        }
+    }
+    &__card__wrap {
+        margin-top: 30px;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(5, 80px);
+        grid-template-rows: repeat(5, 50px);
+        gap: 20px;
+        .blue {
+            background-color: rgb(0, 102, 255);
+        }
+        .red {
+            background-color: rgb(238, 77, 40);
+        }
+        .neutral {
+            background-color: antiquewhite;
+        }
+        .black {
+            background-color: rgb(39, 37, 37);
+        }
+    }
 }

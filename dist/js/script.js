@@ -12,6 +12,8 @@ window.addEventListener('DOMContentLoaded', () => {
           redBtn = document.querySelectorAll('.btn__choiсe_red'),
           playBtn = document.querySelector('.btn1'),
           startBtn = document.querySelector('.btn2'),
+          mapCard = document.querySelectorAll('.map__card'),
+          firstMoveDiv = document.querySelector('.map__descr'),
           okBtn = document.querySelector('.btn3'),
           restartBtn = document.querySelector('.end__restart'),
           end = document.querySelectorAll('.end'),
@@ -22,6 +24,15 @@ window.addEventListener('DOMContentLoaded', () => {
         blueChoice = 'men',
         redChoice = 'women',
         neutralCards = ['play__card__neutralW', 'play__card__neutralM'];
+        arrWords = words.toUpperCase().split(', '), 
+        setWords = [],
+        setCards = ['red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
+                    'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
+                    'neutral', 'neutral', 'neutral', 'neutral', 'neutral', 'neutral', 'neutral', 'black'],
+        newSetCard = [],
+        firstMove = '',
+        redCount = 0,
+        blueCount = 0;
 
     function switchDisplay(i) {
         i.classList.toggle('hide_display');
@@ -44,20 +55,21 @@ window.addEventListener('DOMContentLoaded', () => {
             redChoice = `${event.target.dataset.team}`;
         }
     });
+
     //Окно предупреждение
     playBtn.addEventListener('click', () => {
+
         switchDisplay(menuSection[0]);
         switchDisplay(capitansSection[0]);
-    });
-    //Окно с карточкой для капитанов
-    startBtn.addEventListener('click', () => {
-        switchDisplay(capitansSection[0]);
-        switchDisplay(mapSection[0]);
-        
+
     });
 
-    //Запуск игры
-    okBtn.addEventListener('click', () => {
+    //Окно с карточкой для капитанов
+    startBtn.addEventListener('click', () => {
+
+        switchDisplay(capitansSection[0]);
+        switchDisplay(mapSection[0]);
+
         //Блок устаноки рубашек карточек в зависимости от типов команд
         switch (blueChoice) {
             case 'men': teamBlue[0] = 'play__card__blueM'; break;
@@ -75,20 +87,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 teamRed[1] = 'play__card__redW'; 
                 break;
         }
-        
-        let arrWords = words.toUpperCase().split(', '), 
-            setWords = [],
-            setCards = ['red', 'red', 'red', 'red', 'red', 'red', 'red', 'red',
-                        'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue', 'blue',
-                        'neutral', 'neutral', 'neutral', 'neutral', 'neutral', 'neutral', 'neutral', 'black'],
-            firstMove = '',
-            redCount = 0,
-            blueCount = 0;
 
-        switchDisplay(mapSection[0]);
-        switchDisplay(playSection[0]);
-
-        //Блок генерации типов карточек и присваивание их к словам
+        //Чей первый ход и у кого больше карточек
         let randomNum = Math.floor(Math.random() * 2);
         if (randomNum == 0) {
             setCards.push('red');
@@ -101,18 +101,49 @@ window.addEventListener('DOMContentLoaded', () => {
             redCount = 8;
             blueCount = 9;
         }
-        wordWrap.forEach((item) => {
-            let randomCard = Math.floor(Math.random() * setCards.length);
-            item.dataset.typeOfCard = setCards[randomCard];
-            setCards.splice(randomCard, 1); // удаляем использованную карту из массива
-        });
-        
+
         //Выбираем 25 случайных слов
         for (let i = 0; i < 25; i++) {
             let someIndex = Math.floor(Math.random() * arrWords.length); //генерируем случайное число от 0 до длины массива arrWords (не влючительно)
             setWords[i] = arrWords[someIndex];
             arrWords.splice(someIndex, 1);
         }
+
+        //Составляем карту карточек по цветам и показываем ее на экране
+        if (firstMove == 'red') {
+            firstMoveDiv.innerHTML = 'Первые ходят КРАСНЫЕ'
+        } else {
+            firstMoveDiv.innerHTML = 'Первые ходят СИНИЕ'
+        }
+        for (let i = 0; i < 25; i++) {
+            let randomCard = Math.floor(Math.random() * setCards.length);
+            newSetCard[i] = setCards[randomCard];
+            setCards.splice(randomCard, 1); // удаляем использованную карту из массива
+        }
+        mapCard.forEach((item, i) => {
+            item.classList.add(`${newSetCard[i]}`);
+            item.innerHTML = `${setWords[i]}`;
+            if (setWords[i].length > 8) {
+                item.classList.add('map__card_s');
+            }
+            if (item.classList.contains('black')) {
+                item.classList.add('map__card_b');
+            }
+        });
+
+    });
+
+    //Запуск игры
+    okBtn.addEventListener('click', () => {
+
+        switchDisplay(mapSection[0]);
+        switchDisplay(playSection[0]);
+
+        //Присваиваем типы карточек к созданым картам
+        wordWrap.forEach((item, i) => {
+            item.dataset.typeOfCard = newSetCard[i];
+        });
+        
         //Размещаем слова на карточках
         wordOne.forEach((item, i) => {
             item.innerHTML = `${setWords[i]}`;
@@ -126,10 +157,11 @@ window.addEventListener('DOMContentLoaded', () => {
                 item.classList.add('word_two_s');
             }
         });
-        //
-
+        
+        //Показываем слой со словами
         switchDisplay(wordSection[0]);
 
+        //Алгоритм игры
         wordSection[0].addEventListener('click', (event) => {
             if (event.target.classList.contains('word_wrap')) {
                 switch (event.target.dataset.typeOfCard) {

@@ -1,6 +1,6 @@
 .captains {
     display: block;
-    padding-top: 30px;
+    padding-top: 100px;
     width: 830px;
     height: 580px;
     border-radius: 12px;
@@ -10,12 +10,20 @@
     left: 50vw;
     transform: translate(-50%, -50%);
     .btn2 {
+        margin-top: 20px;
         width: 200px;
-        height: 40px;
+        height: 60px;
     }
     &__descr {
         text-align: center;
-        margin-top: 100px;
+        margin-top: 20px;
 
+    }
+    &__logo {
+        height: 200px;
+    }
+    &__wrap {
+        width: fit-content;
+        margin: 0 auto;
     }
 }
