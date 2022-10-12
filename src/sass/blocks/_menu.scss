@@ -13,6 +13,9 @@
         height: 100%;
         border-radius: 7px;
     }
+    .shadow {
+        box-shadow: 2px 2px 3px gray;
+    }
     &__title {
         text-align: center;
         font-size: 40px;
@@ -38,6 +41,9 @@
         border-radius: 40px;
         padding: 20px;
         border-color: antiquewhite;
+        &__title {
+            box-shadow: 2px 2px 3px gray;
+        }
     }
     .btn__choiсe_blue {
         width: 80px;
