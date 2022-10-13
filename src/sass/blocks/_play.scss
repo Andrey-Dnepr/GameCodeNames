@@ -13,26 +13,34 @@
         box-shadow: 3px 3px 3px rgb(63, 62, 62);
         cursor: pointer;
         background: url('../img/card_word.jpg');
+        background-size: cover;
         &__redW {
             background: url('../img/redW.jpg');
+            background-size: cover;
         }
         &__redM {
             background: url('../img/redM.jpg');
+            background-size: cover;
         }
         &__blueW {
             background: url('../img/blueW.jpg');
+            background-size: cover;
         }
         &__blueM {
             background: url('../img/blueM.jpg');
+            background-size: cover;
         }
         &__black {
             background: url('../img/black.jpg');
+            background-size: cover;
         }
         &__neutralW {
             background: url('../img/neutralW.jpg');
+            background-size: cover;
         }
         &__neutralM {
             background: url('../img/neutralM.jpg');
+            background-size: cover;
         }
     }
     

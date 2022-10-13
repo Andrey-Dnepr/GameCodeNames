@@ -126,6 +126,9 @@ window.addEventListener('DOMContentLoaded', () => {
             if (setWords[i].length > 8) {
                 item.classList.add('map__card_s');
             }
+            if (setWords[i].length > 11) {
+                item.classList.add('map__card_ss');
+            }
             if (item.classList.contains('black')) {
                 item.classList.add('map__card_b');
             }
