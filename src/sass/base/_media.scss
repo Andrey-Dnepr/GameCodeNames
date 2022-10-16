@@ -163,3 +163,123 @@
         }
     }
 }
+@media (max-height: 350px) {
+    .menu {
+        padding-top: 0px;
+        height: 270px;
+        width: 700px;
+        &__title {
+            position: absolute;
+            top: 9px;
+            left: 350px;
+            transform: translateX(-50%);
+        }
+        &__play {
+            margin-top: -140px;
+            width: 90px;
+            height: 90px;
+        }
+        &__team__item__title {
+            grid-column: 1 / 3;
+        }
+        &__team__item__title_red {
+            grid-column: 2 / 4;
+        }
+    }
+    .captains {
+        padding-top: 11px;
+        height: 270px;
+        width: 700px;
+        &__wrap {
+            img {
+                height: 125px;
+            }
+        }
+    }
+    .map {
+        padding-top: 0px;
+        width: 700px;
+        height: 270px;
+        &__descr {
+            width: 60px;
+            margin-top: 98px;
+            left: 40px;
+        }
+        &__card {
+            padding-top: 14px;
+            &_s {
+                padding-top: 18px;
+            }
+            &_ss {
+                padding-top: 18px;
+            }
+        }
+        &__card__wrap {
+            margin-top: 12px;
+            gap: 5px;
+            grid-template-rows: repeat(5, 45px);
+        }
+        .btn3 {
+            width: 60px;
+            height: 60px;
+            margin-top: -155px;
+            margin-right: 40px;
+
+        }
+    }
+    .play {
+        grid-template-columns: repeat(5, 67px);
+        grid-template-rows: repeat(5, 45px);
+        gap: 5px;
+        &__card {
+            width: 67px;
+            height: 45px;
+        }
+    }
+    .word {
+        grid-template-columns: repeat(5, 67px);
+        grid-template-rows: repeat(5, 45px);
+        gap: 5px;
+        &__card {
+            gap: 5px;
+            width: 67px;
+            height: 45px;
+        }
+        &_one {
+            width: 67px;
+            font-size: 8px;
+            top: 26px;
+            left: 0px;
+            &_s {
+                top: 28px;
+                font-size: 6px;
+            }
+        }
+        &_two {
+            font-size: 6px;
+            top: 5px;
+            left: -11px;
+            &_s {
+                left: -11px;
+                font-size: 4px;
+            }
+        }
+        &_wrap {
+            gap: 5px;
+            width: 67px;
+            height: 45px;
+        }
+    }
+    .end {
+        padding-top: 20px;
+        width: 700px;
+        height: 270px;
+        &__restart {
+            position: static;
+            transform: none;
+            margin-top: 20px;
+            width: 200px;
+            height: 60px;
+        }
+    }
+}
